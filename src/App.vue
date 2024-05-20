@@ -14,6 +14,22 @@ const getDatas = async () => {
   const { filters } = config;
   const pageSize = 100;
   const dataRows = {};
+  const getGroupValue = async (controlId, value, dataType) => {
+    return {
+      spliceType: 1,
+      isGroup: true,
+      groupFilters: [
+        {
+          controlId: controlId,
+          dataType: dataType,
+          spliceType: 1,
+          filterType: 51,
+          dynamicSource: [],
+          values: [value],
+        },
+      ],
+    };
+  };
   const get_group_name_datas = {};
   get_group_name_datas[11] = (group_value) => {
     for (const iterator of group_value.options) {
