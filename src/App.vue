@@ -59,10 +59,18 @@ const getDatas = async () => {
       const groupName = groupData ? groupData.value : "空";
       const class_type = row[env.class_type];
       if (class_type in dataRows[groupName]) {
-        dataRows[groupName][class_type].push(row);
+        dataRows[groupName][class_type].push({
+          row,
+          start_time: row[env.start_time] || "",
+          end_time: row[env.end_time] || "",
+        });
       } else {
         dataRows[groupName][class_type] = [];
-        dataRows[groupName][class_type].push(row);
+        dataRows[groupName][class_type].push({
+          row,
+          start_time: row[env.start_time] || "",
+          end_time: row[env.end_time] || "",
+        });
       }
     });
   }
